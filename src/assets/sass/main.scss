@@ -21,7 +21,6 @@ body {
   filter: url(#blur-filter);
   -webkit-filter: blur(6px);
   filter: blur(6px);
-  transition: opacity .3s ease;
 }
 
 .blurable {

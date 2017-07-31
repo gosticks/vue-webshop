@@ -9,7 +9,7 @@
         <div class="center">BRANDNAMEO</div>
         <div class="right">
           <ul>
-            <li><span class="items-in-cart"> 2 </span> <i class="icon ecommerce icon-ecommerce-bag"></i></li>
+            <li @click="showCart()"><span class="items-in-cart"> 2 </span> <i class="icon ecommerce icon-ecommerce-bag"></i></li>
           </ul>
         </div>
       </div>
@@ -19,7 +19,11 @@
 
 <script>
 export default {
-
+  methods: {
+    showCart () {
+      this.$bus.$emit('toggleModal', true)
+    }
+  }
 }
 </script>
 

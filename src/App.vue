@@ -1,26 +1,41 @@
 <template>
-  <div class="app-wrapper blurable blur">
-    <div class="layout-wrapper">
-      <oxy-header></oxy-header>
-      <router-view></router-view>
-    </div>
-    <oxy-footer class="footer-wrapper"></oxy-footer>
+  <div class="app-wrapper">
+    <div class="blurable" :class="{blur : showModal}">
+      <div class="layout-wrapper">
+        <oxy-header></oxy-header>
+        <router-view></router-view>
+      </div>
+      <oxy-footer class="footer-wrapper"></oxy-footer>
+    </div>  
+    <oxy-modal v-if="showModal">
+      <div slot="container">
+        <portal-target name="modal"></portal-target>
+      </div>
+    </oxy-modal>        
   </div>
 </template>
 
 <script>
   import OxyFooter from './components/GeneralViews/OxyFooter.vue'
   import OxyHeader from './components/GeneralViews/OxyHeader.vue'
-
+  import OxyModal from './components/UIComponents/OxyModal.vue'
+  
   export default {
     components: {
       OxyFooter,
-      OxyHeader
+      OxyHeader,
+      OxyModal
+    },
+
+    created () {
+      this.$bus.$on('toggleModal', (modalState) => {
+        this.showModal = modalState
+      })
     },
 
     data () {
       return {
-        showCart: true
+        showModal: false
       }
     }
   }

@@ -1,30 +1,25 @@
 <template>
-  <div>
-    <div class="container">
-      <p>This shop is work in progress!</p>
-      <div class="row">
-        <div v-for="item of items" class="four columns"> 
-          <div class="item product">
-            <img class="product-thumb" :src="item.thumbnail">
-            <p class="product-name">{{item.name}}</p>
-            <p class="product-price">{{priceString(item.prices)}}</p>
-          </div>
+  <div class="container">
+    <p>This shop is work in progress!</p>
+    <div class="row">
+      <div v-for="item of items" class="four columns"> 
+        <div class="item product">
+          <img class="product-thumb" :src="item.thumbnail">
+          <p class="product-name">{{item.name}}</p>
+          <p class="product-price">{{priceString(item.prices)}}</p>
         </div>
       </div>
     </div>
-    <oxy-modal v-if="showModal">
-      <h1 slot="container">Testing Modal</h1>
-    </oxy-modal>
+    <portal to="modal">
+      <p>This slot content will be rendered wherever the with name 'destination'
+      is  located.
+      </p>
+    </portal>
   </div>
 </template>
 
 <script>
-import OxyModal from '../UIComponents/OxyModal.vue'
-
 export default {
-  components: {
-    OxyModal
-  },
   methods: {
     priceString: function (priceObj) {
       return priceObj.usd + ' $'
