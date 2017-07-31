@@ -7,6 +7,8 @@ This template is based on the great setup [cristijora](https://github.com/cristi
 
 <!-- ## Documentation -->
 
+## PROJECT IN DEVELOPMENT! THIS PROJECT IS NOT YET FUNCTIONAL!
+
 ## Build Setup
 
 ### install dependencies
