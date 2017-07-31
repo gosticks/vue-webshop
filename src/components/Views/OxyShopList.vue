@@ -2,7 +2,7 @@
   <div class="container">
     <p>This shop is work in progress!</p>
     <div class="row">
-      <div v-for="item of items" class="four columns"> 
+      <div v-for="item of items" class="four columns" @click="itemSelected(item.id)"> 
         <div class="item product">
           <img class="product-thumb" :src="item.thumbnail">
           <p class="product-name">{{item.name}}</p>
@@ -23,8 +23,12 @@
 <script>
 export default {
   methods: {
-    priceString: function (priceObj) {
+    priceString (priceObj) {
       return priceObj.usd + ' $'
+    },
+
+    itemSelected (id) {
+      this.$router.push({ path: 'product/' + id, params: {id: id} })
     },
 
     closeModal () {

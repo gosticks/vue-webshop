@@ -1,4 +1,5 @@
 import OxyShopList from '../components/Views/OxyShopList.vue'
+import OxyShopItem from '../components/Views/OxyShopItem.vue'
 
 const routes = [
   {
@@ -6,6 +7,14 @@ const routes = [
     component: OxyShopList
   //   redirect: OPTIONAL_REDIRECT
   //   children: [OPTINAL_CHILDREN]
+  },
+  {
+    path: '/prducts/',
+    component: OxyShopList
+  },
+  {
+    path: '/product/:id',
+    component: OxyShopItem
   }
   // Not Found example
   // { path: '*', component: NotFound }

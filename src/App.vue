@@ -3,7 +3,9 @@
     <div class="blurable" :class="{blur : showModal}">
       <div class="layout-wrapper">
         <oxy-header></oxy-header>
-        <router-view></router-view>
+        <transition name="fade" mode="out-in">
+          <router-view></router-view>
+        </transition>
       </div>
       <oxy-footer class="footer-wrapper"></oxy-footer>
     </div>  
@@ -57,5 +59,13 @@
     left: 0;
     right: 0;
     padding: 15px;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .1s
+  }
+
+  .fade-enter, .fade-leave-to {
+    opacity: 0
   }
 </style>
