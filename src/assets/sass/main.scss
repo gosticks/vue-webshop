@@ -19,8 +19,8 @@ body {
   filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='6');
   -webkit-filter: url(#blur-filter);
   filter: url(#blur-filter);
-  -webkit-filter: blur(6px);
-  filter: blur(6px);
+  -webkit-filter: blur($modal-overlay-blur-radius);
+  filter: blur($modal-overlay-blur-radius);
 }
 
 .blurable {

@@ -11,9 +11,11 @@
       </div>
     </div>
     <portal to="modal">
-      <p>This slot content will be rendered wherever the with name 'destination'
-      is  located.
-      </p>
+      <div class="container">
+        <h1>Testing Modal</h1>
+        <p>Lorem ipsum some content goes in here</p>
+        <button @click="closeModal()">Close modal</button>
+      </div>
     </portal>
   </div>
 </template>
@@ -23,6 +25,10 @@ export default {
   methods: {
     priceString: function (priceObj) {
       return priceObj.usd + ' $'
+    },
+
+    closeModal () {
+      this.$bus.$emit('toggleModal', false)
     }
   },
 

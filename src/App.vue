@@ -7,7 +7,7 @@
       </div>
       <oxy-footer class="footer-wrapper"></oxy-footer>
     </div>  
-    <oxy-modal v-if="showModal">
+    <oxy-modal v-show="showModal">
       <div slot="container">
         <portal-target name="modal"></portal-target>
       </div>
@@ -29,6 +29,7 @@
 
     created () {
       this.$bus.$on('toggleModal', (modalState) => {
+        console.debug('modal event triggered')
         this.showModal = modalState
       })
     },
