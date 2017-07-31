@@ -1,9 +1,29 @@
 @import "components/variables";
 @import "components/mixins";
 
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    min-height: 100vh;
+}
+
 body {
-    background-color: #eee;
-    text-align: center;
-    color: #222;
+    background-color: $main-background-color;
+    color: $main-font-color;
     font-family: sans-serif;
+}
+
+.blur {
+  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='6');
+  -webkit-filter: url(#blur-filter);
+  filter: url(#blur-filter);
+  -webkit-filter: blur(6px);
+  filter: blur(6px);
+  transition: opacity .3s ease;
+}
+
+.blurable {
+  transition: filter 160ms ease-in-out;
 }

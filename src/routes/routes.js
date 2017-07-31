@@ -1,10 +1,12 @@
+import OxyShopList from '../components/Views/OxyShopList.vue'
+
 const routes = [
-  // {
-  //   path: '/',
-  //   component: COMPONENT_NAME,
+  {
+    path: '/',
+    component: OxyShopList
   //   redirect: OPTIONAL_REDIRECT
   //   children: [OPTINAL_CHILDREN]
-  // },
+  }
   // Not Found example
   // { path: '*', component: NotFound }
 ]

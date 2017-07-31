@@ -26,9 +26,19 @@ const router = new VueRouter({
   linkActiveClass: 'active'
 })
 
+// configure vuex store
+const store = new Vuex.Store({
+  state: {
+    selectedItems: [],
+    totalPrice: 0.0,
+    user: {}
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   render: h => h(App),
-  router
+  router,
+  store
 })
