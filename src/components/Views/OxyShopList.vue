@@ -10,13 +10,6 @@
         </div>
       </div>
     </div>
-    <portal to="modal">
-      <div class="container">
-        <h1>Testing Modal</h1>
-        <p>Lorem ipsum some content goes in here</p>
-        <button @click="closeModal()">Close modal</button>
-      </div>
-    </portal>
   </div>
 </template>
 
@@ -29,10 +22,6 @@ export default {
 
     itemSelected (id) {
       this.$router.push({ path: 'product/' + id, params: {id: id} })
-    },
-
-    closeModal () {
-      this.$bus.$emit('toggleModal', false)
     }
   },
 

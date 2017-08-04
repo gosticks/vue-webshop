@@ -3,12 +3,6 @@
     <div v-if="item" class="row">
       <div class="seven columns">
         <img :src="item.preview" style="width: 100%;">
-        <lightbox
-          id="mylightbox" 
-          :images="item.images"
-          :image_class=" 'img-responsive img-rounded' "
-          :album_class=" 'my-album-class' ">
-        </lightbox>
       </div>
       <div class="five columns">
         <h4>{{item.name}}</h4>
@@ -16,7 +10,7 @@
         <p>
           {{item.short}}
         </p>
-        <button>
+        <button @click="addToCart(pr)">
           Add to cart
         </button>
       </div>
@@ -25,19 +19,40 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   mounted () {
     this.loadItemData(this.id)
   },
 
+  created () {
+    this.$store.dispatch('getAllProducts')
+  },
+
   data () {
     return {
       id: this.$route.params.id,
-      item: false
+      item: false,
+      pr: {
+        id: 1,
+        title: 'iPad 4 Mini',
+        price: 500.01,
+        inventory: 2
+      }
     }
   },
 
+  computed: {
+    ...mapGetters({
+      products: 'allProducts'
+    })
+  },
+
   methods: {
+    ...mapActions([
+      'addToCart'
+    ]),
     computedPrice (price) {
       return price + ' $'
     },
