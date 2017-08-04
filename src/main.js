@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Vuex from 'vuex'
+import store from './store/store.js'
+import { currency } from './filters/currency.js'
 
 // Plugins
 import GlobalComponents from './globalComponents'
@@ -20,9 +21,11 @@ import 'es6-promise/auto'
 // plugin setup
 Vue.use(PortalVue)
 Vue.use(VueRouter)
-Vue.use(Vuex)
 Vue.use(GlobalComponents)
 Vue.use(GlobalDirectives)
+
+// filter setup
+Vue.filter('currency', currency)
 
 // configure router
 const router = new VueRouter({
@@ -40,15 +43,6 @@ Object.defineProperties(Vue.prototype, {
     get: function () {
       return eventBus
     }
-  }
-})
-
-// configure vuex store
-const store = new Vuex.Store({
-  state: {
-    selectedItems: [],
-    totalPrice: 0.0,
-    user: {}
   }
 })
 
