@@ -3,13 +3,13 @@
  * @param {*} state
  */
 export const cartProducts = state => {
-  return state.cart.added.map(({ id, quantity }) => {
-    const product = state.products.all.find(p => p.id === id)
+  return state.cart.added.map(({ id, quantity, title, price }) => {
+    const entry = state.products.all.find(p => p.id === id)
     return {
-      id: product.id,
-      title: product.title,
-      price: product.price,
-      quantity
+      id: entry.id,
+      title: entry.title,
+      price: entry.price,
+      quantity: quantity
     }
   })
 }

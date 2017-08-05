@@ -7,10 +7,11 @@ import * as types from './mutation-types.js'
  */
 export const addToCart = ({ commit }, product) => {
   if (product.inventory > 0) {
-    console.debug('Adding product', product)
+    console.debug('Adding product', product, product.id)
     commit(types.ADD_TO_CART, {
       id: product.id,
-      title: product.title
+      title: product.title,
+      price: product.price
     })
   }
 }

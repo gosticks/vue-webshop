@@ -1,12 +1,12 @@
 <template>
   <div class="container">
     <p>This shop is work in progress!</p>
-    <div class="row">
-      <div v-for="item of items" class="four columns" @click="itemSelected(item.id)"> 
+    <div class="row" v-if="products.length > 0">
+      <div v-for="item of products" class="four columns" @click="itemSelected(item.id)"> 
         <div class="item product">
-          <img class="product-thumb" :src="item.thumbnail">
+          <img class="product-thumb" :src="item.thumb">
           <p class="product-name">{{item.name}}</p>
-          <p class="product-price">{{priceString(item.prices)}}</p>
+          <p class="product-price">{{item.price | currency }}</p>
         </div>
       </div>
     </div>
@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import shop from '../../store/modules/shop-mockup'
+
 export default {
   methods: {
     priceString (priceObj) {
@@ -25,38 +27,18 @@ export default {
     }
   },
 
+  created () {
+    this.$store.dispatch('getAllProducts')
+    let pthis = this
+    shop.getProducts(function (products) {
+      pthis.products = products
+    })
+  },
+
   data () {
     return {
       showModal: true,
-      items: [
-        {
-          id: 'f2123jek21ei231',
-          name: 'Diasal T-Shirt',
-          prices: {
-            usd: 29.95,
-            euro: 25.95
-          },
-          thumbnail: 'https://unsplash.it/300/300'
-        },
-        {
-          id: 'f2123jek21ei231',
-          name: 'Item 01',
-          prices: {
-            usd: 19.95,
-            euro: 15.95
-          },
-          thumbnail: 'https://unsplash.it/400/400'
-        },
-        {
-          id: 'f2123jek21ei231',
-          name: 'Item 01',
-          prices: {
-            usd: 9.95,
-            euro: 5.95
-          },
-          thumbnail: 'https://unsplash.it/500/500'
-        }
-      ]
+      products: []
     }
   }
 }
