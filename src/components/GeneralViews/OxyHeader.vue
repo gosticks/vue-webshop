@@ -15,47 +15,14 @@
       </div>
       <div class="nav-bar menu"></div>
       <portal to="modal">
-        <div class="container" v-if="products.length !== 0">
-          <h3>Cart</h3>
-          <p>Current items in your cart</p>
-          <table class="product-table">
-            <thead>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Total</th>
-              <th></th>
-            </thead>
-            <tbody>
-              <tr v-for="p in products" class="row">
-                <td>{{ p.title }} </td>
-                <td>{{ p.price | currency }} </td> 
-                <td>
-                  <a class="table-button" @click="decrementInCart(p.id)">
-                    <i class="ion-ios-minus-outline"></i>
-                  </a>
-                  {{ p.quantity }}
-                  <a class="table-button" @click="addToCart(p)">
-                    <i class="ion-ios-plus-outline"></i>
-                  </a>
-                </td>
-                <td>{{ (p.price * p.quantity) | currency }}</td>
-                <td>
-                  <a @click="removeItemFromCart(p.id)">
-                    <i class="ion-ios-close-empty"></i>
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="total-price row">
-            <h4 style="float:right;">Total: {{total | currency}}</h4>
-          </div>
-          <button @click="closeModal()">Close modal</button>
-        </div>
-        <div v-else class="container">
-          <h3>Cart Empry</h3>
-          <p>Items added to the cart can be seen here.</p>
+        <div class="container">
+          <template v-if="cartLength !== 0"> 
+            <oxy-cart-view></oxy-cart-view>
+          </template>
+          <template v-else>
+            <h3>Cart Empry</h3>
+            <p>Items added to the cart can be seen here.</p>
+          </template> 
           <button @click="closeModal()">Close modal</button>
         </div>
       </portal>
@@ -64,7 +31,12 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import OxyCartView from '../UIComponents/OxyCartView'
+
 export default {
+  components: {
+    OxyCartView
+  },
 
   data () {
     return {
@@ -74,24 +46,11 @@ export default {
 
   computed: {
     ...mapGetters({
-      products: 'cartProducts',
-      cartLength: 'cartLength',
-      checkoutStatus: 'checkoutStatus'
-    }),
-    total () {
-      return this.products.reduce((total, p) => {
-        return total + p.price * p.quantity
-      }, 0)
-    }
+      cartLength: 'cartLength'
+    })
   },
 
   methods: {
-    ...mapActions([
-      'addToCart',
-      'removeItemFromCart',
-      'decrementInCart'
-    ]),
-
     showCart () {
       this.disabledModal = true
       this.$bus.$emit('toggleModal', true)
@@ -110,6 +69,13 @@ export default {
   .nav-bar {
     height: $nav-bar-height;
     line-height: $nav-bar-height;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 
     > .left, .right, .center {
       display: inline;
@@ -119,7 +85,8 @@ export default {
         text-decoration: none;
 
         li {
-
+          cursor: pointer;
+          
           i {
             font-size: 2.5rem;
           }
