@@ -46,6 +46,10 @@ const mutations = {
   [types.REMOVE_FROM_CART] (state, { id }) {
     const record = state.added.find(p => p.id === id)
     if (record) {
+      let productObj = state.all.find(p => p.id === id)
+      if (productObj) {
+        productObj.inventory += record.quantity
+      }
       state.added.splice(state.added.indexOf(record), 1)
     }
   },
@@ -54,6 +58,10 @@ const mutations = {
     const record = state.added.find(p => p.id === id)
     if (record) {
       if (record.quantity === 1) {
+        let productObj = state.all.find(p => p.id === id)
+        if (productObj) {
+          productObj.inventory += record.quantity
+        }
         state.added.splice(state.added.indexOf(record), 1)
       } else {
         record.quantity--
