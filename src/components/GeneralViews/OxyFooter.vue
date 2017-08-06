@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    &copy; 2017, made with love by gosticks
+    &copy; 2017, made with <i class="ion-android-favorite love"></i> by gosticks
   </div>
 </template>
 
@@ -15,5 +15,9 @@ export default {
     text-align: center;
     color: #bbb;
     font-weight: 100;
+  }
+
+  .love {
+    color: red;
   }
 </style>
