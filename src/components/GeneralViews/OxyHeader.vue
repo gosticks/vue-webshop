@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 import OxyCartView from '../UIComponents/OxyCartView'
 
 export default {
@@ -86,7 +86,7 @@ export default {
 
         li {
           cursor: pointer;
-          
+
           i {
             font-size: 2.5rem;
           }
