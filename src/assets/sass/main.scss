@@ -26,3 +26,12 @@ body {
 .blurable {
   transition: filter 160ms ease-in-out;
 }
+
+.sale-item {
+  color: #e74c3c;
+
+  > span {
+      text-decoration: line-through;
+      color: #CCC;
+  }
+}
