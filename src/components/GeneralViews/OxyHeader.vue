@@ -9,7 +9,7 @@
         <div class="center">BRANDNAMEO</div>
         <div class="right">
           <ul>
-            <li @click="showCart()"><span class="items-in-cart"> {{cartLength}}</span> <i class="ion-ios-cart-outline"></i></li>
+            <li @click="showCart()" class="cart-button"><span class="items-in-cart"> {{cartLength}}</span> <i class="ion-ios-cart-outline"></i></li>
           </ul>
         </div>
       </div>
@@ -65,10 +65,11 @@ export default {
 </script>
 
 <style lang="scss">
-  $nav-bar-height: 66px;
+  $nav-bar-height: 40px;
   .nav-bar {
+    padding: 7px 0px;
     height: $nav-bar-height;
-    line-height: $nav-bar-height;
+    //line-height: $nav-bar-height;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
     -khtml-user-select: none; /* Konqueror HTML */
@@ -86,15 +87,15 @@ export default {
 
         li {
           cursor: pointer;
-
           i {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
           }
 
           .items-in-cart {
             display: inline-block;
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 100;
+            opacity: 0.6
           }
         }
       }
@@ -117,6 +118,19 @@ export default {
     .branding {
       text-align: center;
     }
+  
+    .cart-button {
+      border-radius: 7px;
+      padding: 0 7px;
+      &:hover {
+        background-color: #EEE; 
+      }
+
+      &:activer {
+        background-color: #000;
+        color: #000;
+      }
+    }
   }
 
   .product-table {
@@ -130,11 +144,11 @@ export default {
     i {
       color: #000;
       display: inline-block;
-      font-size: 18px;
+      font-size: 14px;
 
       &.ion-ios-close-empty {
-        font-size: 36px;
-        line-height: 40px;
+        font-size: 22px;
+        line-height: 30px;
       }
     }
   }

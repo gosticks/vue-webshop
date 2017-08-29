@@ -96,12 +96,4 @@ export default {
       font-weight: 400;
     }
   }
-    .sale-item {
-      color: #e74c3c;
-
-      > span {
-        text-decoration: line-through;
-        color: #CCC;
-      }
-    }
 </style>
