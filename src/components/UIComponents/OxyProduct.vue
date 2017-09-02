@@ -1,7 +1,7 @@
 <template>
   <div class="item product">
     <p class="product-image-wrapper">
-      <img class="product-thumb" :src="product.thumb">
+      <oxy-image class="product-thumb" :src="product.thumb"></oxy-image>
     </p>
     <p class="product-name">{{product.title}}</p>
     <oxy-rating :v-if="product.rating" :rating="product.rating"></oxy-rating>
@@ -13,9 +13,12 @@
 </template>
 
 <script>
+import OxyImage from '../UIComponents/OxyImage'
 import OxyRating from './OxyRating.vue'
+
 export default {
   components: {
+    OxyImage,
     OxyRating
   },
   props: {

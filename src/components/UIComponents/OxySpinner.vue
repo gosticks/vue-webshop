@@ -1,6 +1,6 @@
 // this components is based on css styles by lukehaas https://github.com/lukehaas
 <template>
-  <div class="loader" :class="{isActive : play}">Loading...</div>
+  <div class="loader" :class="{play : isActive}">Loading...</div>
 </template>
 
 <script>
@@ -15,13 +15,15 @@ export default {
       this.isActive = false
     },
     continue () {
-        this.isActive
+      this.isActive = true
     }
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+$spinner-color: rgba(0, 0, 0, 0.1);
+
 .loader,
 .loader:after {
   border-radius: 50%;
@@ -33,9 +35,9 @@ export default {
   font-size: 10px;
   position: relative;
   text-indent: -9999em;
-  border-top: 1.1em solid rgba(255, 255, 255, 0.2);
-  border-right: 1.1em solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-top: 1.1em solid $spinner-color;
+  border-right: 1.1em solid $spinner-color;
+  border-bottom: 1.1em solid $spinner-color;
   border-left: 1.1em solid #ffffff;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
