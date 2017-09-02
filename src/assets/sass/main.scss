@@ -35,3 +35,92 @@ body {
       color: #CCC;
   }
 }
+
+.search-input {
+    position: relative;
+    background-color: $search-input-background-color;
+    margin: 0;
+    width: 100%;
+    font-size: 24px;
+    height: auto;
+    font-family: inherit;
+    font-weight: inherit;
+    color: inherit;
+    padding: 6px;
+    border: 0 !important;
+    border-radius: 0;
+    padding: 16px 16px 16px 60px;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition-propery: box-shadow;
+    transition-duration: 150ms;
+    transition-timing-function: ease; 
+
+    &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+      color:    $search-input-placeholder-color;
+    }
+    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color:    $search-input-placeholder-color;
+      opacity:  1;
+    }
+    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color:    $search-input-placeholder-color;
+      opacity:  1;
+    }
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color:    $search-input-placeholder-color;
+    }
+    &::-ms-input-placeholder { /* Microsoft Edge */
+      color:    $search-input-placeholder-color;
+    }
+
+    &:focus {
+      // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.15);
+    }
+}
+
+   .search-wrapper {
+    position: relative;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+
+      .search-icon, .clear-icon {
+        position: absolute;
+        
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version, currently
+                                      supported by Chrome and Opera */
+    }
+    .search-icon {
+        font-size: 2.5rem;
+        color: #EEE;
+        top: 19px;
+        left: 23px;
+    }
+
+    .clear-icon {
+        display: inline-block;
+        border-radius: 30px;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 32px;
+        font-size: 17px;
+        color: #FFF;
+        background-color: #EEE;
+        top: 18px;
+        right: 23px;
+        cursor: pointer;
+        transition-propery: background-color;
+        transition-duration: 200ms;
+        transition-timing-function: ease; 
+
+    &:hover {
+        background-color: #000;
+    }
+      }
+    }
