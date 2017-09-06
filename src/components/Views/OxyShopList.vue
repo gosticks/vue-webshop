@@ -1,6 +1,9 @@
 <template>
   <div class="container">
     <p>This shop is work in progress!</p>
+    <h3 class="category-header"><b>Suggested</b></h3>
+    <oxy-category-slider></oxy-category-slider>
+    <h3 class="category-header"><b>Mixed</b> <small>Category </small>  </h3>
     <div class="row product-list" v-if="products.length > 0">
       <div v-for="item of products" class="columns" @click="itemSelected(item.id)"> 
         <oxy-product :product="item"></oxy-product>
@@ -13,10 +16,12 @@
 import shop from '../../store/modules/shop-mockup'
 import OxyRating from '../UIComponents/OxyRating'
 import OxyProduct from '../UIComponents/OxyProduct'
+import OxyCategorySlider from '../UIComponents/OxyCategorySlider'
 
 export default {
   components: {
     OxyProduct,
+    OxyCategorySlider,
     OxyRating
   },
 
@@ -48,7 +53,9 @@ export default {
 </script>
 
 <style lang="scss">
-
+  .category-header {
+    padding-left: 15px;
+  }
   .product-list {
     .columns, .column{
       margin: 0;
